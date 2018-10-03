@@ -1,13 +1,16 @@
 public class JLinLib {
-    public static String isPalindrome(String word) {
+    public static boolean isPalindrome(String word) {
         String backwards = "";
 
-        for (int i = str.length() - 1) {
-            chara = word.substring
-            backwards = backwards + chara;
+        for (int i = word.length() - 1; i >= 0; i--) {
+            backwards = backwards + word.charAt(i);
         }
 
-        return backwards;
+        if (word.equals(backwards)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
