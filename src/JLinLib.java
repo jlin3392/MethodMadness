@@ -60,6 +60,8 @@ public class JLinLib {
         }
 
         return counter;
+        // FIX IN CLASS: code does not ignore duplicate letters (ex. testing "aa", "abc", and "aabc" returns 4, not 3)
+        // try to run some other test cases and see if you can figure out where any other bugs might be
     }
 
 }
