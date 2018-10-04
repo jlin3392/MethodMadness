@@ -52,16 +52,21 @@ public class JLinLib {
         }
 
 
-        for (int i = 0; i < longestWord; i++) {
-            letter = longestString.charAt(i);
-            if ((word1.indexOf(letter) > -1 && !word1.equals(longestString)) || (word2.indexOf(letter) > -1 && !word2.equals(longestString)) || (word3.indexOf(letter) > -1 && !word3.equals(longestString))) {
-                counter += 1;
-            }
-        }
 
         return counter;
         // FIX IN CLASS: code does not ignore duplicate letters (ex. testing "aa", "abc", and "aabc" returns 4, not 3)
         // try to run some other test cases and see if you can figure out where any other bugs might be
     }
+
+    public static String cutOut(String mainStr, String subStr) {
+        int length = subStr.length();
+        int index = mainStr.indexOf(subStr);
+
+        String removeFront = mainStr.substring(0, index);
+        String removeBack = mainStr.substring(index + length);
+
+        return removeFront + removeBack;
+    }
+
 
 }
