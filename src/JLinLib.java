@@ -1,5 +1,10 @@
 public class JLinLib {
 
+    /**
+     * Checks if the String word is a palindrome, a word that is spelled the same forwards and backwards.
+     * @param word being tested
+     * @return boolean that is true if the word is a palindrome and false if it is not
+     */
     public static boolean isPalindrome(String word) {
         String backwards = "";
 
@@ -14,6 +19,11 @@ public class JLinLib {
         }
     }
 
+    /**
+     * Adds all the numbers up to the int number and returns the total sum
+     * @param number to add up to
+     * @return int value that is the sum of all the numbers from 0 to number
+     */
     public static int sumUpTo(int number) {
         int product = 1;
 
@@ -24,6 +34,13 @@ public class JLinLib {
         return product;
     }
 
+    /**
+     * Finds the number of unique letters shared between at least two of three strings
+     * @param word1 first String to compare
+     * @param word2 second String to compare
+     * @param word3 third String to compare
+     * @return int value of the maximum number of shared letters between two of the three words
+     */
     public static int stringUnion(String word1, String word2, String word3) {
         int counter = 0;
         char letter;
@@ -68,5 +85,20 @@ public class JLinLib {
         return removeFront + removeBack;
     }
 
+    public static void primePrinter(int num) {
+        int count = 0;
+        int value = 2;
+
+        while (count < num) {
+            for (int i = 2; i < Math.sqrt(num); i++) {
+                if (num%i != 0) {
+                    print(value + ", ");
+                    count++;
+                }
+
+                value++;
+            }
+        }
+    }
 
 }
