@@ -64,12 +64,62 @@ public class JLinLib {
         System.out.println(full);
     }
 
-    public static int leastCommonMultiple(int num1, int num2, int num3) {
-        int GCF;
-        int largestNum;
-        int secondNum;
-        int smallestNum;
+    public static int greatestCommonDivisor(int num1, int num2, int num3) {
+        int min;
+        int GCD = 1;
 
-        
+        min = Math.min(num1, num2);
+        min = Math.min(min, num3);
+
+        for (int i = min; i > 1; i--) {
+            if (num1%i == 0 && num2%i == 0 && num3%i == 0 && num1 != 1 && num2 != 1 && num3 != 1) {
+                GCD = i;
+            }
+        }
+
+        if (num1 == 0 || num2 == 0 || num3 == 0) {
+            return 0;
+        } else if (num1 == 1 || num2 == 1 || num3 == 1){
+            return 1;
+        } else {
+            return GCD;
+        }
+    }
+
+    public static void leastCommonMultiple(int num1, int num2, int num3) {
+        int LCMinitial = 0;
+        int LCMfinal = 0;
+        int min;
+        int secondMin = 0;
+        int max = 0;
+        boolean equals;
+
+        min = Math.min(num1, num2);
+        min = Math.min(min, num3);
+
+        max = Math.max(num1, num2);
+        max = Math.max(max, num3);
+
+        secondMin = Math.max(Math.min(num1, num2), Math.min(Math.max(num1, num2), num3));
+
+        if (min != secondMin) {
+            equals = false;
+        } else {
+            equals = true;
+        }
+
+        if (greatestCommonDivisor(num1, num2, num3) == 0) {
+            System.out.println("The least common multiple is undefined since one of the parameters is 0.");
+        }
+        else {
+            LCMinitial = (num1 * num2)/greatestCommonDivisor(num1, num2, num3);
+
+            if ((LCMinitial * num3)%min == 0 && (LCMinitial * num3)%secondMin == 0 && (LCMinitial * num3)%max == 0 && max%min == 0 && max%secondMin == 0) {
+                LCMfinal = max;
+            } else {
+                LCMfinal = (LCMinitial * num3)/greatestCommonDivisor(num1, num2, num3);
+            }
+        }
+        System.out.println(LCMfinal);
     }
 }
