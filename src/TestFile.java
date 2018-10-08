@@ -6,7 +6,7 @@ public class TestFile {
         System.out.println(JLinLib.sumUpTo(4));
         System.out.println(JLinLib.cutOut("cobbobcat","cat"));
         JLinLib.fooBarBaz(15);
-        JLinLib.leastCommonMultiple(2, 2, 5);
+        System.out.println(JLinLib.isFibonacci(5));
 
     }
 }

@@ -36,6 +36,12 @@ public class JLinLib {
         return product;
     }
 
+    /**
+     * Returns mainStr after removing the first instance where subStr shows up in it
+     * @param mainStr main string from which you are trying to remove the first instance of subStr
+     * @param subStr substring to be removed
+     * @return String of mainStr with the first instance of subStr removed
+     */
     public static String cutOut(String mainStr, String subStr) {
         int length = subStr.length();
         int index = mainStr.indexOf(subStr);
@@ -46,6 +52,12 @@ public class JLinLib {
         return removeFront + removeBack;
     }
 
+    /**
+     * Prints the numbers from 1 to num1, replacing each multiple of 3 with foo, each multiple of 5 with bar,
+     * and each multiple of both 3 and 5 with baz
+     * Returns void since the method only prints the numbers
+     * @param num1 number to print integers up to
+     */
     public static void fooBarBaz(int num1) {
         String full = "";
 
@@ -64,62 +76,33 @@ public class JLinLib {
         System.out.println(full);
     }
 
-    public static int greatestCommonDivisor(int num1, int num2, int num3) {
-        int min;
-        int GCD = 1;
+    /**
+     * Checks if num1 is in the Fibonacci sequence
+     * @param num1 the number being checked
+     * @return true if it is, false if it is not
+     */
+    public static boolean isFibonacci(int num1)
+    {
+        int a = 1;
+        int b = 1;
+        int c = 0;
 
-        min = Math.min(num1, num2);
-        min = Math.min(min, num3);
+        String num = num1 + " ";
+        String full = b + " " + a + " ";
 
-        for (int i = min; i > 1; i--) {
-            if (num1%i == 0 && num2%i == 0 && num3%i == 0 && num1 != 1 && num2 != 1 && num3 != 1) {
-                GCD = i;
-            }
+        while ((a + b) <= num1) {
+            full = full + (a + b) + " ";
+            c = a;
+            a = b;
+            b = b + c;
         }
 
-        if (num1 == 0 || num2 == 0 || num3 == 0) {
-            return 0;
-        } else if (num1 == 1 || num2 == 1 || num3 == 1){
-            return 1;
+        if (full.indexOf(num) == -1) {
+            return false;
         } else {
-            return GCD;
+            return true;
         }
     }
 
-    public static void leastCommonMultiple(int num1, int num2, int num3) {
-        int LCMinitial = 0;
-        int LCMfinal = 0;
-        int min;
-        int secondMin = 0;
-        int max = 0;
-        boolean equals;
 
-        min = Math.min(num1, num2);
-        min = Math.min(min, num3);
-
-        max = Math.max(num1, num2);
-        max = Math.max(max, num3);
-
-        secondMin = Math.max(Math.min(num1, num2), Math.min(Math.max(num1, num2), num3));
-
-        if (min != secondMin) {
-            equals = false;
-        } else {
-            equals = true;
-        }
-
-        if (greatestCommonDivisor(num1, num2, num3) == 0) {
-            System.out.println("The least common multiple is undefined since one of the parameters is 0.");
-        }
-        else {
-            LCMinitial = (num1 * num2)/greatestCommonDivisor(num1, num2, num3);
-
-            if ((LCMinitial * num3)%min == 0 && (LCMinitial * num3)%secondMin == 0 && (LCMinitial * num3)%max == 0 && max%min == 0 && max%secondMin == 0) {
-                LCMfinal = max;
-            } else {
-                LCMfinal = (LCMinitial * num3)/greatestCommonDivisor(num1, num2, num3);
-            }
-        }
-        System.out.println(LCMfinal);
-    }
 }
